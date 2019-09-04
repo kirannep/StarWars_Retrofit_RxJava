@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starwarapi_retrofit_rxjava.R
+import com.example.starwarapi_retrofit_rxjava.common.Conversion
 import com.example.starwarapi_retrofit_rxjava.model.BaseModelPerson
 import kotlinx.android.synthetic.main.cardview.view.*
 
@@ -19,7 +20,7 @@ class Adapter(private val person:BaseModelPerson):RecyclerView.Adapter<PersonVie
 
     override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
         holder.name.text = person.results[position].name
-        holder.height.text = person.results[position].height.toString()
+        holder.height.text = Conversion(person.results[position].height)+"ft"
         holder.mass.text = person.results[position].mass.toString()
     }
 }
