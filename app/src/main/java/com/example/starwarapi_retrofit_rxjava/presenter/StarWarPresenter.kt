@@ -39,6 +39,7 @@ class StarWarPresenter(_view:ViewInterface):PresenterInterface {
             }
 
             override fun onSubscribe(d: Disposable) {
+                compositeDisposable.add(d)
 
             }
 
