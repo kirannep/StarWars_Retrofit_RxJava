@@ -9,7 +9,10 @@
                                                android:layout_height="match_parent"
                                                 android:id="@+id/recyclerview"
                                                 >
-
     </androidx.recyclerview.widget.RecyclerView>
+
+    <include layout="@layout/error"
+             android:id="@+id/errormsg"
+             android:visibility="gone" />
 
 </FrameLayout>

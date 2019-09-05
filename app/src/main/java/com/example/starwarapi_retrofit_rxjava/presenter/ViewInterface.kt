@@ -4,4 +4,5 @@ import com.example.starwarapi_retrofit_rxjava.model.BaseModelPerson
 
 interface ViewInterface {
     fun displayPersonInfo(person: BaseModelPerson)
+    fun displayErrorInfo()
 }

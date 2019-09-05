@@ -15,6 +15,7 @@ import io.reactivex.schedulers.Schedulers
 
 class StarWarPresenter(_view:ViewInterface):PresenterInterface {
 
+
     var view:ViewInterface = _view
     var personmodel:BaseModelPerson? = null
     val personObserver = PersonObserver()
@@ -23,13 +24,10 @@ class StarWarPresenter(_view:ViewInterface):PresenterInterface {
     override fun getPersonInfo() {
         val personRequest = RetrofitInstance().retrofitInstance.create(GetPersonRequest::class.java)
         val call: Observable<BaseModelPerson> = personRequest.getpersonRequest()
-
             call
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(personObserver)
-
-
     }
 
     private fun PersonObserver(): Observer<BaseModelPerson> {
@@ -40,7 +38,6 @@ class StarWarPresenter(_view:ViewInterface):PresenterInterface {
 
             override fun onSubscribe(d: Disposable) {
                 compositeDisposable.add(d)
-
             }
 
             override fun onNext(t: BaseModelPerson) {
@@ -49,10 +46,8 @@ class StarWarPresenter(_view:ViewInterface):PresenterInterface {
             }
 
             override fun onError(e: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                view.displayErrorInfo()
             }
-
-
         }
     }
 

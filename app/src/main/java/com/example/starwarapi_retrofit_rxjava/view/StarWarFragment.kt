@@ -16,6 +16,10 @@ import kotlinx.android.synthetic.main.fragment_star_war.*
 
 
 class StarWarFragment : Fragment(),ViewInterface {
+    override fun displayErrorInfo() {
+        errormsg.visibility = View.VISIBLE
+    }
+
     override fun displayPersonInfo(person: BaseModelPerson) {
         val adapter : Adapter = Adapter(person)
         recyclerview.layoutManager = LinearLayoutManager(context)
